@@ -15,6 +15,10 @@ Lee las instrucciones del proyecto antes de elegir motores. Esta skill es genera
 
 Para un video nuevo, parte de intención y público, escribe el guion audiovisual y desarrolla bocetos de escenarios, personajes y acciones antes del acabado. Pasa a una animática con tiempos y prueba de voz cuando corresponda; después construye animación, sonido y revisión integrada. Lee [guion y storyboard](references/guion-storyboard.md). Si ya existe la animación, adapta el guion y registra ese orden como excepción. No reinicies etapas aprobadas para una corrección pequeña.
 
+Cuando la pieza explica un objeto real, edita metraje o cuenta una historia para redes, consulta [Material real y montaje](references/material-real-y-montaje.md). Decide qué toma acredita el aspecto o la acción, verifica su procedencia y monta el detalle real donde el público lo necesita.
+
+Para editar una pieza que parece una sucesión de láminas o trabajar a partir de videos de referencia, consulta [Del plano al gesto](references/del-plano-al-gesto.md). Elige un pasaje decisivo, identifica qué lleva la mirada entre planos y usa la promesa del video para decidir qué cortar. Si el texto lleva la acción, diseña primero su estado de lectura y el gesto que lo conecta con la imagen.
+
 Para motion graphics narrativo o explicativo, lee [motion graphics](references/motion-graphics.md): define promesa, hilo visual y la cadena estado anterior → disparador → acción → respuesta → consecuencia. Antes de pulir, comprueba en una animática o bloqueo que las relaciones se perciben. Si el plan repite «título + objeto + descripción + transición» sin mostrar el proceso, corrige esa estructura; más duración, cámara o efectos pueden conservar el mismo problema. Una historia puede sostenerse con formas, líneas, datos y palabras, sin personajes complejos ni 3D. Adapta las pruebas a piezas deliberadamente tipográficas, de identidad o de presentación.
 
 Resuelve el estado de máxima legibilidad y las trayectorias dentro del perfil de destino desde los bocetos. La riqueza visual debe construir ambiente y acción con jerarquía: evita escenas vacías por falta de trabajo, repetición de tarjetas y adornos inconexos. Escoge recursos por la imagen que permiten construir, no por cantidad de dependencias.
@@ -83,3 +87,8 @@ Para fotografías o imágenes de modelos generativos utiliza la herramienta corr
 En imágenes verifica geometría, escala, alfa, texto, recortes, recursos y editabilidad en el destino previsto. En video revisa estados completos y transitorios, archivo final y sonido. El [capítulo de revisión](references/render-qc.md) distingue evidencias y límites.
 
 Conserva fuentes editables cuando formen parte de la entrega. Explica qué cambió, por qué mejora, qué se revisó y qué queda pendiente. No declares licencia, aprobación, originalidad o verificación sin evidencia ni añadas exportaciones ajenas al pedido.
+
+
+
+
+
