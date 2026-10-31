@@ -99,6 +99,8 @@ Líneas delgadas, retículas, partículas y gradientes pueden perderse o ensucia
 
 ## 8. Antipatrones como diagnóstico, no como prohibición estética
 
+Para motion graphics, consulta la [ruta de acciones y transformaciones](motion-graphics.md) y la [tabla de diagnóstico y corrección](antipatrones-motion.md). Para conectar consecuencias a través de encuadres o subcomposiciones, usa [continuidad entre escenas](continuidad-escenas.md). Estos módulos concretan la producción sin imponer un estilo único.
+
 - **La diapositiva con un fade universal:** la acción no hace avanzar el mensaje. Posible pregunta: ¿qué relación o transformación explica mejor la misma información?
 - **La metralleta de efectos:** cada palabra o partícula recibe un acento y la mezcla pierde jerarquía. Posible ajuste: agrupar movimientos semánticos y reservar acentos para hitos.
 - **Movimiento sin causa:** el personaje se desplaza, pero nada en la historia cambia. Posible ajuste: conectar gesto, motivo y consecuencia.

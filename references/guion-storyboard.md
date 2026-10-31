@@ -59,6 +59,8 @@ Aplica desde el boceto el perfil de zonas seguras del destino. Diseña por separ
 
 ## 5. Storyboard y animática: dos preguntas distintas
 
+En motion graphics explicativo, usa la [ficha de acción](motion-graphics.md) para concretar el disparador y la consecuencia que continúa. Revisa temporalmente el mecanismo sin títulos ni voz si eso permite detectar dependencia textual; no esperes entender términos, cifras o una pieza tipográfica al retirar su contenido. Cuando el movimiento de cámara o de todo el contenedor parezca sustituir comportamiento, prueba un encuadre fijo para observar qué hacen realmente sus partes. Son diagnósticos, no variantes finales obligatorias.
+
 El storyboard responde qué se ve, desde dónde y qué cambia. La animática añade tiempos reales: cuánto espera el público, cuánto dura la acción y cuándo llega una nueva información. Puede usar los bocetos y movimientos simples; no necesita acabado final para detectar lentitud, confusión o exceso de texto.
 
 No conviertas el storyboard en una colección de diapositivas. Escribe verbos que expliquen cambios visibles: abrir, dividir, intentar, retroceder, comparar, conectar, integrar. Las entradas por opacidad pueden servir, pero no deben ser el único comportamiento de todos los objetos.

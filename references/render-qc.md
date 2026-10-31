@@ -2,7 +2,7 @@
 
 ## Contenido
 
-Evidencias; revisión de imagen; video; captura opcional; archivo final; límites. No aplica una misma batería a todo: revisa lo pertinente al medio y al cambio. Para perfiles de plataforma, accesibilidad y lectura de métricas, consulta [plataformas y calidad](plataformas-y-calidad.md); para escucha y eventos, [sonido por eventos](sonido-por-eventos.md).
+Evidencias; revisión de imagen; video; archivo final; límites. No aplica una misma batería a todo: revisa lo pertinente al medio y al cambio. Para perfiles de plataforma, accesibilidad y lectura de métricas, consulta [plataformas y calidad](plataformas-y-calidad.md); para escucha y eventos, [sonido por eventos](sonido-por-eventos.md).
 
 ## 1. Tres niveles de evidencia
 
@@ -22,6 +22,8 @@ Una imagen derivada de un cuadro debe tener composición completa y contenido le
 
 ## 3. Video antes del render completo
 
+Para una explicación con motion graphics, revisa también la relación prometida: disparador visible, acción, respuesta y consecuencia reconocible. Las [pruebas editoriales de motion](motion-graphics.md) ayudan a detectar si cámara, títulos o efectos están ocultando un mecanismo ausente. Una hoja de contacto atractiva no demuestra que esa cadena se perciba en movimiento. Registra el hallazgo con tiempo, observación y corrección; no uses una puntuación agregada como aprobación estética.
+
 Muestra los estados de máxima legibilidad. Si la composición falla allí, corrígela antes de pulir movimiento. Captura también inicio, desarrollo y salida de acciones importantes. Densifica muestras en convergencias, máscaras y transiciones.
 
 Una hoja de contacto revela variedad, densidad y continuidad. No certifica fluidez ni sonido. Doce o quince cuadros pueden ser útiles en una pieza; otra duración y complejidad necesitan un muestreo diferente. Revisa cuadros vecinos de las uniones cuando haya riesgo de salto.
@@ -34,23 +36,13 @@ Verifica la API temporal: segundos e índice no son intercambiables. Decide dura
 
 Prueba buscar A, luego B y volver a A. Diferencias pueden revelar estado acumulado, azar, fuentes, media o reloj sin controlar. Igualdad en esa muestra no prueba toda la película ni portabilidad entre equipos. Para simulaciones acumulativas define reconstrucción o caché determinista.
 
-## 5. Helper conservado
-
-`../scripts/capture_frames.py` toma muestras de un HTML local con `seek(t)` o `renderFrame(f)`, guarda PNG, hoja de contacto y un informe. Necesita Python, Pillow, Playwright y navegador disponible; no instala ninguno. Puede recibir navegador explícito y detecta rutas de Chrome/Edge en Windows.
-
-Sus opciones de resolución y fps son parámetros, no estándares. Por defecto usa 1080×1920 y 30 fps: cámbialos según el proyecto. En modo fotogramas redondea el tiempo solicitado al índice correspondiente; revisa el argumento efectivo registrado.
-
-La comparación A→B→A utiliza bytes PNG en el entorno de captura. No mide gusto, sincronía de voz, todos los solapamientos ni todas las máquinas. La hoja de contacto es ayuda de inspección, no un certificado.
-
-El helper desactiva animaciones al capturar. Sirve a escenas reconstruidas por tiempo; una animación CSS autónoma puede verse alterada. Antes de adoptarlo, comprueba que no cambie el contenido que pretendes examinar. Tampoco comprueba por sí mismo todos los recursos WebGL o externos.
-
-## 6. Geometría sin falsos certificados
+## 5. Geometría sin falsos certificados
 
 En DOM mide elementos relevantes y considera sus transformaciones. Una caja de grupo grande puede ocultar colisiones entre hijos. En Canvas el DOM solo ve un lienzo; necesitas instrumentación del modelo para estudiar objetos internos.
 
 Clasifica advertencias: recorte real, invasión de margen, colisión, superposición intencional o estado transitorio legítimo. Un objeto fuera de su caja local no está necesariamente fuera del área de uso. No ignores todos los avisos ni los conviertas todos en defectos.
 
-## 7. Codificar y comprobar la salida
+## 6. Codificar y comprobar la salida
 
 Separa imagen calculada y señal codificada. Intermedios sin pérdida preservan texto; JPEG añade otra compresión. H.264 y ciertos formatos de píxel suelen servir a entregas comunes, pero alfa, color y compatibilidad dependen del destino. No impongas un CRF o preset heredado.
 
@@ -60,10 +52,14 @@ Con ffprobe examina dimensiones, duración, frecuencia, cuadros cuando estén di
 
 Extrae muestras del archivo final, además del HTML. Revisa texto fino, bandas de gradiente, alfa si aplica y pérdida en partículas. Una resolución declarada mayor no demuestra detalle nativo.
 
-## 8. Reproducción, escucha y accesibilidad
+## 7. Reproducción, escucha y accesibilidad
 
 Reproduce a velocidad normal para ritmo y mezcla. Cámara lenta, por ejemplo 0,75×, ayuda a estudiar acciones, pero no sustituye velocidad normal. Si no puedes escuchar o revisar movimiento continuo, dilo sin certificarlo desde capturas.
 
 Evita destellos y movimientos innecesariamente agresivos; estudia cambios de luminancia y orientación. Un video exportado no responde automáticamente a preferencias de movimiento reducido de una interfaz. No declares cumplimiento de accesibilidad por una única prueba visual.
 
 Cuando un cambio y las verificaciones pertinentes pasan, entrega. Repite o amplía revisión si aparecen errores nuevos, no por acumular comprobaciones sin una incertidumbre concreta.
+
+## 8. Acceso a la entrega
+
+Comprueba existencia, tamaño y apertura del archivo en el entorno disponible. Distingue una ruta local de un adjunto o enlace remoto accesible. Un nombre nuevo no explica por sí solo un error del cliente. Si no puedes comprobar el acceso desde el dispositivo del usuario, declara ese límite y conserva el error exacto para investigarlo; no lo confundas con un fallo del render.

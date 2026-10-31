@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratorio de motion: una señal abre un paso</title>
+<style>
+  *{box-sizing:border-box} body{margin:0;background:#111b2a;color:#eef2f6;font:16px system-ui,sans-serif}
+  main{max-width:1000px;margin:auto;padding:20px} svg{display:block;width:100%;height:auto;background:#142337;border-radius:16px}
+  .label{fill:#b8cada;font:18px system-ui,sans-serif} .title{fill:#eff6ff;font:600 30px system-ui,sans-serif}
+  .controls{display:flex;align-items:center;flex-wrap:wrap;gap:16px;padding:20px 0} input[type=range]{flex:1;min-width:160px;accent-color:#72e2c0}
+  button{font:inherit;border:0;border-radius:8px;padding:10px 18px;background:#72e2c0;color:#102035;cursor:pointer}
+  p{color:#b8cada;line-height:1.5} output{min-width:65px} label{display:flex;gap:7px;align-items:center}
+</style>
+<main>
+<svg id="scene" viewBox="0 0 960 540" role="img" aria-labelledby="sceneTitle sceneDesc">
+  <title id="sceneTitle">Una señal abre un paso</title>
+  <desc id="sceneDesc">Un cursor pulsa un botón, una señal llega al mecanismo, la puerta se abre y un objeto cruza. La puerta vuelve a cerrarse y el objeto permanece al otro lado. Modelo simbólico sin sonido.</desc>
+  <defs><clipPath id="doorWindow"><rect x="516" y="205" width="58" height="170"/></clipPath></defs>
+  <g id="labels"><text x="58" y="70" class="title">Una señal abre un paso</text>
+    <text x="58" y="102" class="label">Estímulo → transmisión → respuesta → consecuencia</text>
+    <text x="158" y="503" class="label">Pulsar</text><text x="505" y="422" class="label">Abrir</text>
+    <text x="720" y="422" class="label">Cruzar</text>
+  </g>
+  <path d="M90 376 H870" stroke="#416079" stroke-width="4" fill="none"/>
+  <path id="routeBase" d="M200 433 V230 H545 V193" stroke="#34536b" stroke-width="5" fill="none"/>
+  <path id="route" d="M200 433 V230 H545 V193" stroke="#72e2c0" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle id="signal" r="8" fill="#fff1c3"/>
+  <rect x="498" y="177" width="94" height="28" rx="7" fill="#34536b"/>
+  <circle id="latch" cx="545" cy="191" r="7" fill="#e7ad68"/>
+  <g clip-path="url(#doorWindow)"><g id="door"><rect x="530" y="205" width="30" height="170" rx="4" fill="#e7ad68"/>
+    <path d="M539 220 V358 M551 220 V358" stroke="#b78042" stroke-width="3"/></g></g>
+  <ellipse id="shadow" cx="265" cy="370" rx="25" ry="5" fill="#08101c"/>
+  <g id="object"><circle r="25" fill="#edf5fc"/><path d="M-9 0 L-2 7 L12 -8" stroke="#142337" stroke-width="4" fill="none" id="check"/></g>
+  <rect x="153" y="426" width="94" height="48" rx="14" fill="#08101c"/>
+  <rect id="button" x="153" y="420" width="94" height="48" rx="14" fill="#e7ad68"/>
+  <path id="cursor" d="M0 0 L3 28 L11 20 L20 34 L27 29 L18 16 L30 14 Z" fill="#fff" stroke="#102035" stroke-width="3"/>
+</svg>
+<div class="controls"><button id="play" type="button">Reproducir</button><input id="time" type="range" min="0" max="10" value="0" step="0.01" aria-label="Tiempo en segundos"><output id="readout">0.00 s</output><label><input id="showLabels" type="checkbox" checked>Rótulos</label></div>
+<p>Ejemplo de diez segundos, sin audio ni dependencias. Estudia la relación entre las acciones; sus colores y tiempos no son una plantilla. La cámara permanece fija. API: <code>seek(segundos)</code> y <code>renderFrame(índice)</code>, a 30 fps.</p>
+</main>
+<script>
+  const $ = id => document.getElementById(id);
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const phase = (t,a,b) => clamp((t-a)/(b-a));
+  const smooth = v => v*v*(3-2*v);
+  const mix = (a,b,u) => a+(b-a)*u;
+  const routeLength = $('route').getTotalLength();
+  $('route').style.strokeDasharray = routeLength;
+  let currentTime=0, playing=false, origin=0;
+  window.duration=10; window.fps=30;
+  window.stateAt = rawTime => {
+    const t=Math.max(0,Math.min(10,Number(rawTime)));
+    if(!Number.isFinite(t)) throw new TypeError('Tiempo no válido');
+    const press=phase(t,1.05,1.18)*(1-phase(t,1.3,1.5));
+    return {t,press,signal:phase(t,1.4,2.7),
+      open:smooth(phase(t,2.85,3.65))*(1-smooth(phase(t,7,7.8))),
+      x:mix(265,755,smooth(phase(t,4,6.4))),done:t>=6.4,
+      cursorX:mix(90,197,smooth(phase(t,0.25,1))),
+      cursorY:mix(390,440,smooth(phase(t,0.25,1)))+4*press,
+      cursorOpacity:1-phase(t,1.6,1.95)};
+  };
+  window.seek = t => {
+    const s=window.stateAt(t); currentTime=s.t;
+    $('button').setAttribute('y',420+5*s.press);
+    $('button').setAttribute('fill',s.t>=1.18?'#72e2c0':'#e7ad68');
+    $('route').style.strokeDashoffset=routeLength*(1-s.signal);
+    const p=$('route').getPointAtLength(routeLength*s.signal);
+    $('signal').setAttribute('cx',p.x); $('signal').setAttribute('cy',p.y);
+    $('signal').setAttribute('opacity',s.t>=1.4&&s.t<2.85?1:0);
+    $('latch').setAttribute('fill',s.t>=2.7?'#72e2c0':'#e7ad68');
+    $('door').setAttribute('transform',`translate(0 ${-175*s.open})`);
+    $('object').setAttribute('transform',`translate(${s.x} 340)`);
+    $('object').querySelector('circle').setAttribute('fill',s.done?'#72e2c0':'#edf5fc');
+    $('shadow').setAttribute('cx',s.x); $('check').setAttribute('opacity',s.done?1:0);
+    $('cursor').setAttribute('transform',`translate(${s.cursorX} ${s.cursorY})`);
+    $('cursor').setAttribute('opacity',s.cursorOpacity);
+    $('time').value=s.t; $('readout').value=s.t.toFixed(2)+' s';
+    return s;
+  };
+  window.renderFrame=f=>window.seek(f/window.fps);
+  $('showLabels').addEventListener('change',e=>$('labels').setAttribute('visibility',e.target.checked?'visible':'hidden'));
+  const stop=()=>{playing=false;$('play').textContent='Reproducir'};
+  $('time').addEventListener('input',e=>{stop();window.seek(Number(e.target.value))});
+  function tick(now){if(!playing)return; window.seek((now-origin)/1000);if(currentTime>=10){stop();return}requestAnimationFrame(tick)}
+  $('play').addEventListener('click',()=>{if(playing){stop();return}if(currentTime>=10)window.seek(0);playing=true;origin=performance.now()-currentTime*1000;$('play').textContent='Pausar';requestAnimationFrame(tick)});
+  window.seek(0);
+</script>
+</html>

@@ -1,8 +1,8 @@
 # Diseño Frames Js
 
-**Una guía para crear mejores imágenes SVG y videos con código.**
+**Un libro de consulta en crecimiento sobre imágenes SVG y videos con código.**
 
-Diseño Frames Js es una skill de consulta y aprendizaje para personas que quieren diseñar imágenes y piezas audiovisuales con herramientas de programación. Ayuda a elegir la técnica adecuada, comprender qué aporta cada biblioteca y tomar decisiones visuales con intención.
+Diseño Frames Js reúne conocimiento, ejemplos analizados y fuentes para comprender cómo diseñar imágenes y piezas audiovisuales con herramientas de programación. Ayuda a comparar técnicas, entender qué aporta cada biblioteca y desarrollar criterio visual.
 
 El objetivo es que el código sirva para crear composiciones más cuidadas, claras y expresivas. La calidad no depende de usar muchos efectos o tecnologías: depende de que la forma, el movimiento y los recursos respondan a lo que la pieza necesita comunicar.
 
@@ -13,15 +13,25 @@ El objetivo es que el código sirva para crear composiciones más cuidadas, clar
 - Comparaciones de HTML/CSS, SVG, Canvas, p5.js, GSAP, Three.js, shaders, Lottie, HyperFrames, Remotion y FFmpeg.
 - Ideas para combinar dibujo, animación, composición, sonido y revisión.
 - Ejemplos conceptuales que ayudan a razonar; no plantillas que deban copiarse.
-- Un recurso opcional para capturar muestras de una animación HTML y revisar si se reproduce de manera consistente.
 - Un flujo de guion, bocetos y animática, con historia, personajes y ganchos pensados para redes.
+- Una especialidad de motion graphics: acciones que explican, transformaciones, continuidad y un laboratorio mínimo de causa y respuesta.
 - Criterios para zonas seguras de video e imagen, sonido por acciones, narración y revisión con subagentes cuando estén autorizados.
 
 ## Un ejemplo conceptual
 
 El [caso GitHub](references/caso-github.md) muestra cómo un conflicto cotidiano puede transformarse en una breve explicación con acciones, voz, diseño sonoro y pruebas. El storyboard está hecho para estudiar la continuidad; es una reconstrucción del prototipo, no una plantilla para copiar.
 
-![Storyboard conceptual de seis momentos para el caso de GitHub](assets/caso-github/storyboard.png)
+
+### HyperFrames a fondo
+
+El Libro E amplía la parte dedicada a HyperFrames como sistema para dirigir piezas audiovisuales. Sus capítulos están organizados como conocimiento de consulta, no como proyectos prefabricados:
+
+- [Selección y arquitectura narrativa](references/hyperframes/seleccion-y-arquitectura.md): responsabilidades, elección de medios y modularidad con sentido.
+- [Composiciones y tiempo](references/hyperframes/composiciones-y-tiempo.md): escenas, clips, ventanas y continuidad.
+- [GSAP, búsqueda temporal y dibujo procedural](references/hyperframes/gsap-y-seek.md): estados reconstruibles, Canvas, 3D y propiedad de medios.
+- [Catálogo, medios y procedencia](references/hyperframes/catalogo-y-medios.md): reutilización crítica, licencias y sonido causal.
+- [Flujo de inspección y calidad](references/hyperframes/flujo-cli-y-calidad.md): evidencia estructural, visual, sonora y de archivo.
+- [Compatibilidad por versión](references/hyperframes/compatibilidad-versiones.md): discrepancias documentales fechadas y límites de las conclusiones.
 
 La guía puede servir tanto para una ilustración o un gráfico estático como para una composición audiovisual. También explica la diferencia entre un SVG con geometría editable y una imagen rasterizada, que se forma con píxeles.
 
@@ -30,6 +40,9 @@ La guía puede servir tanto para una ilustración o un gráfico estático como p
 Abre [SKILL.md](SKILL.md) para conocer el enfoque y encontrar el capítulo pertinente. Las guías están en `references/` y se pueden leer por separado:
 
 - [Guion y storyboard](references/guion-storyboard.md): empezar por lo que se cuenta y bocetar cómo ocurre.
+- [Motion graphics](references/motion-graphics.md): transformar una idea en acciones, elegir técnicas por función y revisar qué se comprende.
+- [Continuidad entre escenas](references/continuidad-escenas.md): conservar consecuencias, orientar la cámara y reconstruir estados al buscar el tiempo.
+- [Antipatrones de motion](references/antipatrones-motion.md): diagnosticar una presentación involuntaria y corregir la capa responsable.
 - [Redes y zonas seguras](references/redes-zonas-seguras.md): captar atención y proteger contenido de interfaces y recortes.
 - [Colaboración y revisión](references/colaboracion-revision.md): coordinar subagentes y revisar con evidencia.
 - [Fundamentos visuales](references/fundamentos-visuales.md): diagnosticar y mejorar una composición.
@@ -50,7 +63,7 @@ Abre [SKILL.md](SKILL.md) para conocer el enfoque y encontrar el capítulo perti
 - [Bibliografía audiovisual](references/bibliografia-audiovisual.md): índice anotado de las 45 fuentes del libro de dirección audiovisual.
 - [Caso de estudio: explicar GitHub](references/caso-github.md): aprender de las revisiones de un prototipo.
 
-El aprendizaje combina tres libros de referencia y documentación técnica. Sus ejemplos ayudan a razonar sobre diseño; sus políticas particulares, cifras contextuales y tendencias no se convierten automáticamente en instrucciones para proyectos futuros. La tabla de [fuentes y trazabilidad](references/fuentes-y-cobertura.md) explica la cobertura de cada libro.
+El aprendizaje combina libros de referencia, una bitácora crítica, propuestas y documentación técnica. Sus ejemplos ayudan a razonar sobre diseño; sus políticas particulares, cifras contextuales y tendencias no se convierten automáticamente en instrucciones para proyectos futuros. La tabla de [fuentes y trazabilidad](references/fuentes-y-cobertura.md) explica la cobertura y las ediciones.
 
 No es necesario leer todo para cada tarea. Usa el índice para localizar lo que necesitas. Si estás creando, empieza por la intención visual y consulta las herramientas según la forma de imagen y el tipo de movimiento que requieras.
 
@@ -62,7 +75,7 @@ La skill también compara bibliotecas y otros recursos de consulta. Esa comparac
 
 ## De dónde surge
 
-La guía reúne aprendizajes de tres libros de estudio sobre dirección audiovisual, motion design programático, bibliotecas y criterio visual, además de documentación técnica y repositorios públicos enlazados en [Fuentes y trazabilidad](references/fuentes-y-cobertura.md).
+La guía reúne aprendizajes sobre dirección audiovisual, motion graphics, bibliotecas, criterio visual y HyperFrames, además de documentación técnica y repositorios públicos enlazados en [Fuentes y trazabilidad](references/fuentes-y-cobertura.md).
 
 ## Estructura
 
@@ -70,8 +83,7 @@ La guía reúne aprendizajes de tres libros de estudio sobre dirección audiovis
 SKILL.md                  Entrada e índice de consulta
 agents/openai.yaml        Nombre y descripción para la interfaz de Codex
 references/               Capítulos y fuentes de consulta
-assets/caso-github/        Boceto vectorial y vista previa del caso conceptual
-scripts/capture_frames.py Herramienta opcional para revisar animaciones HTML
+assets/motion-causal/     Laboratorio opcional de SVG y tiempo controlado
 ```
 
 La skill puede utilizarse con Codex cuando está disponible en su catálogo de skills. Sus capítulos también pueden leerse como una guía independiente.
